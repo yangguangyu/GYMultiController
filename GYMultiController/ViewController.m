@@ -19,6 +19,11 @@
 
 
 @property (nonatomic, strong) UIButton *selectedButton;
+
+
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+@property (nonatomic, strong) NSArray<UIViewController *> *controllers;
 @end
 
 @implementation ViewController
@@ -26,13 +31,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //关注，喜欢，最热
     _titleArray = @[@"关注",@"喜欢",@"最热"];
+    _controllers = @[[UIViewController new],[UIViewController new],[UIViewController new]];
+    
     //1.导航条
     self.navigationItem.titleView = [self getTitleView];
     
-    
     //2.控制器的view
+
+    self.scrollView = [self getScrollView];
+    
+    [self.view addSubview:self.scrollView];
 }
 
 - (UIView *)getTitleView {
@@ -75,6 +84,27 @@
     return navView;
 }
 
+- (UIScrollView *)getScrollView {
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    scrollView.pagingEnabled = YES;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    scrollView.contentSize = Size(self.view.width * self.controllers.count, scrollView.height);
+    
+    
+    for (int i = 0; i < self.controllers.count; ++i) {
+        UIViewController *vc = self.controllers[i];
+        
+        UIView *view = vc.view;
+        view.backgroundColor = YGYRandomColor;
+        view.x = scrollView.width * i;
+        [scrollView addSubview:vc.view];
+        
+    }
+    
+    return scrollView;
+}
+
 - (void)titleButtonClick:(UIButton *)button {
     if (self.selectedButton == button) {
         return;
@@ -87,15 +117,7 @@
     [self moveLineWithButton:button];
     //scrollView的动画
     
-    
-    
-    if (button.tag == 0) {
-        
-    }else if (button.tag == 1) {
-        
-    }else if (button.tag == 2) {
-        
-    }
+
 }
 
 - (void)moveLineWithButton:(UIButton *)button {
@@ -105,5 +127,6 @@
         
     }];
 }
+
 
 @end
