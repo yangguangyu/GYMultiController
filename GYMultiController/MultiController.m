@@ -12,32 +12,44 @@
 
 @interface MultiController () <UIScrollViewDelegate>
 @property (nonatomic, assign) CGFloat kCount;
-@property (nonatomic, strong) UIViewController *mainVC;
 @property (nonatomic, strong) UIView *titleView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation MultiController
 
-- (instancetype)initWithMainVC:(UIViewController *)vc titles:(NSArray *)titles controllers:(NSArray *)controllers {
-    if (self = [super init]) {
-        _mainVC = vc;
-        _titleArray = titles;
-        _controllers = controllers;
+//- (instancetype)initWithTitles:(NSArray *)titles controllers:(NSArray *)controllers {
+//    if (self = [super init]) {
+//
+//        _titleArray = titles;
+//        _controllers = controllers;
+//        
+//        
+//        self.kCount = MIN(_titleArray, _controllers).count;
+//        
+//        if (self.kCount) {
+//            //1.导航条
+//            self.navigationItem.titleView = [self getTitleView];
+//            
+//            //2.控制器的view
+//            self.scrollView = [self getScrollView];
+//            [self.view addSubview:self.scrollView];
+//        }
+//    }
+//    return self;
+//}
+
+- (void)setupAll {
+    self.kCount = MIN(_titleArray, _controllers).count;
+    
+    if (self.kCount) {
+        //1.导航条
+        self.navigationItem.titleView = [self getTitleView];
         
-        
-        self.kCount = MIN(_titleArray, _controllers).count;
-        
-        if (self.kCount) {
-            //1.导航条
-            vc.navigationItem.titleView = [self getTitleView];
-            
-            //2.控制器的view
-            self.scrollView = [self getScrollView];
-            [vc.view addSubview:self.scrollView];
-        }
+        //2.控制器的view
+        self.scrollView = [self getScrollView];
+        [self.view addSubview:self.scrollView];
     }
-    return self;
 }
 
 - (UIView *)getTitleView {
@@ -82,9 +94,9 @@
 }
 
 - (UIScrollView *)getScrollView {
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:_mainVC.view.bounds];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollView.pagingEnabled = YES;
-    _mainVC.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     scrollView.delegate = self;
     scrollView.showsHorizontalScrollIndicator = NO;
     

@@ -9,12 +9,7 @@
 #import "ViewController.h"
 #import "MultiController.h"
 
-@interface ViewController () 
-
-@property (nonatomic, strong) NSArray *titleArray;
-@property (nonatomic, strong) NSArray<UIViewController *> *controllers;
-
-@property (nonatomic, strong) MultiController *multi;
+@interface ViewController ()
 @end
 
 @implementation ViewController
@@ -23,10 +18,11 @@
     [super viewDidLoad];
     
     
-    _titleArray = @[@"关注",@"喜欢",@"最热"];
-    _controllers = @[[UIViewController new],[UIViewController new],[UIViewController new]];
+    self.titleArray = @[@"关注",@"喜欢",@"最热"];
+    self.controllers = @[[UIViewController new],[UIViewController new],[UIViewController new]];
     
-    _multi = [[MultiController alloc] initWithMainVC:self titles:_titleArray controllers:_controllers];
+    [self setupAll];
+    
 }
 
 

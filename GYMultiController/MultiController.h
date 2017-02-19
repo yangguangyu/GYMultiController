@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MultiController : NSObject
+@interface MultiController : UIViewController
 
 @property (nonatomic, strong) UIView *line;
 @property (nonatomic, strong) UIButton *selectedButton;
@@ -16,6 +16,6 @@
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) NSArray<UIViewController *> *controllers;
 
-
-- (instancetype)initWithMainVC:(UIViewController *)vc titles:(NSArray *)titles controllers:(NSArray *)controllers;
+- (void)setupAll;
+//- (instancetype)initWithTitles:(NSArray *)titles controllers:(NSArray *)controllers;
 @end
