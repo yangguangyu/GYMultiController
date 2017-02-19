@@ -14,6 +14,7 @@
 		5A5EFC561E593BB300F15F59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A5EFC551E593BB300F15F59 /* Assets.xcassets */; };
 		5A5EFC591E593BB300F15F59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A5EFC571E593BB300F15F59 /* LaunchScreen.storyboard */; };
 		5A5EFC631E593DF300F15F59 /* UIView+YGYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5EFC621E593DF300F15F59 /* UIView+YGYAdd.m */; };
+		5A5EFC661E5966EF00F15F59 /* MultiController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5EFC651E5966EF00F15F59 /* MultiController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		5A5EFC601E593D5F00F15F59 /* UtilsMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UtilsMacro.h; sourceTree = "<group>"; };
 		5A5EFC611E593DF300F15F59 /* UIView+YGYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YGYAdd.h"; sourceTree = "<group>"; };
 		5A5EFC621E593DF300F15F59 /* UIView+YGYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YGYAdd.m"; sourceTree = "<group>"; };
+		5A5EFC641E5966EF00F15F59 /* MultiController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiController.h; sourceTree = "<group>"; };
+		5A5EFC651E5966EF00F15F59 /* MultiController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,8 @@
 				5A5EFC4D1E593BB300F15F59 /* AppDelegate.m */,
 				5A5EFC4F1E593BB300F15F59 /* ViewController.h */,
 				5A5EFC501E593BB300F15F59 /* ViewController.m */,
+				5A5EFC641E5966EF00F15F59 /* MultiController.h */,
+				5A5EFC651E5966EF00F15F59 /* MultiController.m */,
 				5A5EFC521E593BB300F15F59 /* Main.storyboard */,
 				5A5EFC551E593BB300F15F59 /* Assets.xcassets */,
 				5A5EFC571E593BB300F15F59 /* LaunchScreen.storyboard */,
@@ -161,6 +166,7 @@
 				5A5EFC631E593DF300F15F59 /* UIView+YGYAdd.m in Sources */,
 				5A5EFC511E593BB300F15F59 /* ViewController.m in Sources */,
 				5A5EFC4E1E593BB300F15F59 /* AppDelegate.m in Sources */,
+				5A5EFC661E5966EF00F15F59 /* MultiController.m in Sources */,
 				5A5EFC4B1E593BB300F15F59 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
