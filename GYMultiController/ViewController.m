@@ -11,7 +11,7 @@
 #import "UIView+YGYAdd.h"
 
 #define kCount 3
-@interface ViewController ()
+@interface ViewController () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSArray *titleArray;
 
@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIButton *selectedButton;
 
 
+@property (nonatomic, strong) UIView *titleView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) NSArray<UIViewController *> *controllers;
@@ -48,6 +49,7 @@
     UIView *navView = [[UIView alloc] init];
 //    navView.backgroundColor = [UIColor redColor];
     navView.frame = Rect(0, 0, 200, 40);
+    self.titleView = navView;
     
     CGFloat width = navView.width/kCount;
     CGFloat height = navView.height;
@@ -88,6 +90,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollView.pagingEnabled = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    scrollView.delegate = self;
     
     scrollView.contentSize = Size(self.view.width * self.controllers.count, scrollView.height);
     
@@ -115,9 +118,9 @@
     self.selectedButton = button;
     //line的动画
     [self moveLineWithButton:button];
-    //scrollView的动画
     
-
+    //scrollView的动画
+    self.scrollView.contentOffset = Point(self.scrollView.width *button.tag, 0);
 }
 
 - (void)moveLineWithButton:(UIButton *)button {
@@ -128,5 +131,32 @@
     }];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    [self moveLineWithScorllView:scrollView];//这里为什么会有错乱的情况
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self moveLineWithScorllView:scrollView];
+}
+
+- (void)moveLineWithScorllView:(UIScrollView *)scrollView {
+    NSInteger index = scrollView.contentOffset.x / scrollView.width;
+    
+    //选中button
+    if (self.selectedButton.tag == index) {
+        return;
+    }
+    
+    for (int i = 0; i < self.titleView.subviews.count; ++i) {
+        
+        if ([self.titleView.subviews[i] isKindOfClass:[UIButton class]]) {//排除line
+            
+            UIButton *button = self.titleView.subviews[i];
+            if (button.tag == index) {
+                [self titleButtonClick:button];
+            }
+        }
+    }
+}
 
 @end
